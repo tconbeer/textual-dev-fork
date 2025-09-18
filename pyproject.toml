@@ -17,7 +17,6 @@ classifiers = [
     "Operating System :: Microsoft :: Windows :: Windows 11",
     "Operating System :: MacOS",
     "Operating System :: POSIX :: Linux",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -26,7 +25,7 @@ classifiers = [
 include = ["src/textual_dev/py.typed", { path = "tests", format = "sdist" }]
 
 [tool.poetry.dependencies]
-python = "^3.8.1"
+python = "^3.9"
 textual = ">=0.86.2"
 textual_serve = ">=1.0.3"
 aiohttp = ">=3.8.1"
