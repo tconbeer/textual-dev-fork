@@ -24,31 +24,17 @@ jobs:
       run:
         shell: bash
     steps:
-      - uses: actions/checkout@v3.5.2
-      - name: Install and configure Poetry # This could be cached, too...
-        uses: snok/install-poetry@v1.3.3
-        with:
-          version: 1.4.2
-          virtualenvs-in-project: true
+      - uses: actions/checkout@v4.1.1
+      - name: Install Poetry
+        run: pipx install poetry==1.7.1
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5.2.0
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v3
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          cache: "poetry"
       - name: Install dependencies
-        run: poetry install
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction
       - name: Run mypy
-        run: |
-          source $VENV
-          mypy .
+        run: poetry run mypy .
       - name: Test with pytest
-        run: |
-          source $VENV
-          pytest tests -v
+        run: poetry run pytest tests -v
