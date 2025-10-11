@@ -8,6 +8,7 @@ from rich.console import Console
 from rich.segment import Segment
 from rich.table import Table
 from rich.text import Text
+from rich.rule import Rule
 
 from textual_dev.renderables import DevConsoleLog, DevConsoleNotice
 
