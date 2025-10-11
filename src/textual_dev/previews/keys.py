@@ -35,6 +35,7 @@ class KeysApp(App[None], inherit_bindings=False):
         width: 1fr;
     }
     """
+    ENABLE_COMMAND_PALETTE = False
 
     last_key: var[str | None] = var[Optional[str]](None)
 
