@@ -7,7 +7,9 @@ from textual_dev.service import DevtoolsService
 
 
 @pytest.fixture
-async def server(aiohttp_server, unused_tcp_port) -> AsyncGenerator[DevtoolsService]:
+async def server(
+    aiohttp_server, unused_tcp_port
+) -> AsyncGenerator[DevtoolsService, None]:
     app = _make_devtools_aiohttp_app(
         size_change_poll_delay_secs=0.001,
     )
