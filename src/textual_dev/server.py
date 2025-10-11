@@ -47,11 +47,16 @@ def _run_devtools(
         pass
 
     try:
+        loop = asyncio.get_event_loop()
+    except RuntimeError:
+        loop = asyncio.new_event_loop()
+
+    try:
         run_app(
             app,
             port=DEVTOOLS_PORT if port is None else port,
             print=noop_print,
-            loop=asyncio.get_event_loop(),
+            loop=loop,
         )
     except OSError:
         from rich import print
