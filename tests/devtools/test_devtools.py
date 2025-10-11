@@ -32,7 +32,7 @@ def console():
 
 
 @time_machine.travel(TIMESTAMP)
-def test_log_message_render(console):
+def test_log_message_render(console) -> None:
     message = DevConsoleLog(
         [Segment("content")],
         path="abc/hello.py",
